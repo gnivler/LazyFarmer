@@ -30,7 +30,7 @@ namespace EasyAttack
                 CombatManager.instance.ExecuteAction(Character, new CombatManager.CombatActionInfo
                 {
                     action = combatAction,
-                    target = Character.lastTargetedCharacter,
+                    target = CombatManager.instance.TargetCharacter,
                 });
             }
         }
