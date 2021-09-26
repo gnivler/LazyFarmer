@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SkipSplashes")]
+[assembly: AssemblyTitle("EasyAttack")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SkipSplashes")]
+[assembly: AssemblyProduct("EasyAttack")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("A2611676-1EDC-4D6C-B556-B7EB1467E727")]
+[assembly: Guid("B15B6797-77FB-41F2-B6DC-112A823AE4F2")]
 
 // Version information for an assembly consists of the following four values:
 //
