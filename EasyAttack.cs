@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Security.AccessControl;
+using HarmonyLib;
 using UnityEngine;
 
 namespace EasyAttack
@@ -6,6 +9,7 @@ namespace EasyAttack
     {
         internal CombatManager.BodyPartTargets BodyPart;
         private static EncounterMember Character => CombatManager.instance.CurrentCharacter;
+        private static CombatManager Cm => CombatManager.instance;
 
         private void Update()
         {
@@ -13,7 +17,7 @@ namespace EasyAttack
                 && IsPlayersTurn(Character)
                 && PlayerInput.IsMouseOverObject(gameObject))
             {
-                CombatManager.instance.SetCurrentBodyPartTarget(BodyPart);
+                Cm.SetCurrentBodyPartTarget(BodyPart);
                 var combatAction = CanShoot() &&
                                    !(Input.GetKey(KeyCode.LeftShift)
                                      || Input.GetKey(KeyCode.RightShift))
@@ -22,29 +26,31 @@ namespace EasyAttack
                         ? CombatManager.CombatActionEnum.Melee
                         : CombatManager.CombatActionEnum.Skip;
 
-                if (combatAction == CombatManager.CombatActionEnum.Skip)
+                if (combatAction == CombatManager.CombatActionEnum.Skip
+                    || combatAction == CombatManager.CombatActionEnum.Melee
+                    && !Cm.CheckCQCMoveValidityWithPassedTarget(Cm.TargetCharacter))
                 {
                     return;
                 }
 
-                CombatManager.instance.ExecuteAction(Character, new CombatManager.CombatActionInfo
+                Cm.ExecuteAction(Character, new CombatManager.CombatActionInfo
                 {
                     action = combatAction,
-                    target = CombatManager.instance.TargetCharacter,
+                    target = Cm.TargetCharacter,
                 });
             }
         }
 
-        private bool CanShoot()
+        private static bool CanShoot()
         {
             return Character.hasRangedWeapon
                    && Character.hasAmmo
-                   && Character.Stamina >= CombatManager.instance.GetStaminaUsedForAction(CombatManager.CombatActionEnum.ShootSingle);
+                   && Character.Stamina >= Cm.GetStaminaUsedForAction(CombatManager.CombatActionEnum.ShootSingle);
         }
 
-        private bool CanMelee() => Character.Stamina >= CombatManager.instance.GetStaminaUsedForAction(CombatManager.CombatActionEnum.Melee);
+        private static bool CanMelee() => Character.Stamina >= Cm.GetStaminaUsedForAction(CombatManager.CombatActionEnum.Melee);
 
-        private bool IsPlayersTurn(EncounterMember memberReferenceHolder)
+        private static bool IsPlayersTurn(EncounterMember memberReferenceHolder)
         {
             if (memberReferenceHolder != null && memberReferenceHolder.isPlayerControlled)
             {
