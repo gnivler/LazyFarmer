@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EasyAttack")]
+[assembly: AssemblyTitle("LazyFarmer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EasyAttack")]
+[assembly: AssemblyProduct("LazyFarmer")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("B15B6797-77FB-41F2-B6DC-112A823AE4F2")]
+[assembly: Guid("D481FE08-D1CA-4164-A5BD-87D035DE22AB")]
 
 // Version information for an assembly consists of the following four values:
 //
